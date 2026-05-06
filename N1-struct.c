@@ -132,14 +132,7 @@ int main()
     printf("    Setembro: R$ %.2f\n", soma_valor_set / cont_set);
     printf("    Outubro: R$ %.2f\n", soma_valor_out / cont_out);
     printf("    Novembro: R$ %.2f\n\n", soma_valor_nov / cont_nov);
-    
-    printf("6 - Total de dias de servico:\n");
-    printf("    Total geral de dias: %.0f dias\n", tdf + tdt);
-    printf("    Media de dias por NT: %.2f dias\n\n", (tdf + tdt) / 123);
-
-    printf("7 - Percentual de dias de Fretamento e Transporte:\n");
-    printf("    Fretamento: %.2f%% dos dias\n", tdf / (tdf + tdt) * 100);
-    printf("    Transporte: %.2f%% dos dias\n\n", tdt / (tdf + tdt) * 100);
+    printf("---------------------------------------------------------------------\n");
 
     return 0;
 }

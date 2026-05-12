@@ -3,12 +3,15 @@
 #include <stdlib.h>
 
 int main() {
+    
+    int usr;
+    int jogar =1;
+    
+    while (jogar == 1) {
+    
     srand(time(NULL));
 
     int moeda = rand() % 2;
-    int usr;
-    int jogar =1;
-    while (jogar == 1) {
 
     printf("Digite 0 para cara e 1 para coroa:\n");
     scanf("%d", &usr);

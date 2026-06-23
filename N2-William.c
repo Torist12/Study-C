@@ -5,6 +5,7 @@
 #define TOTAL 120
 #define MAX_ALERTAS 15
 
+// Estrutura usada para guardar os dados de cada duto.
 struct Duto {
     char codigo[10];
     int funcao;
@@ -16,7 +17,10 @@ int main()
 {
     srand(time(NULL));
 
+    // Vetor principal, vetor ordenado e variavel auxiliar para troca.
     struct Duto dutos[TOTAL], ord[TOTAL], aux;
+
+    // Variaveis usadas para somas, medias, percentuais e contadores.
     float soma_alertas = 0;
     float soma_prod = 0;
     float soma_inj = 0;
@@ -25,12 +29,15 @@ int main()
     int qtd_prod = 0, qtd_inj = 0;
     int prod_200 = 0, inj_220 = 0, inj_zero = 0;
 
+    // Geracao automatica dos 120 dutos.
     for (int i = 0; i < TOTAL; i++) {
         if (i % 2 == 0) {
+            // Dutos de producao.
             sprintf(dutos[i].codigo, "P-%d", 77001 + i);
             dutos[i].funcao = 1;
             dutos[i].pressao = 80.0 + ((float)rand() / RAND_MAX) * (250.0 - 80.0);
         } else {
+            // Dutos de injecao.
             sprintf(dutos[i].codigo, "I-%d", 77001 + i);
             dutos[i].funcao = 2;
             dutos[i].pressao = 150.0 + ((float)rand() / RAND_MAX) * (400.0 - 150.0);
@@ -40,6 +47,7 @@ int main()
         ord[i] = dutos[i];
     }
 
+    // Impressao da primeira tabela, ainda na ordem de geracao.
     printf("\n+---------------------------------------------------------------+\n");
     printf("| TELEMETRIA DOS DUTOS - ORDEM DE GERACAO                       |\n");
     printf("+------------+------+------------+---------------+-------------+\n");
@@ -57,6 +65,7 @@ int main()
 
     printf("+------------+------+------------+---------------+-------------+\n");
 
+    // Calculo das somas e contagens necessarias.
     for (int i = 0; i < TOTAL; i++) {
         soma_alertas += dutos[i].alertas;
 
@@ -81,6 +90,7 @@ int main()
         }
     }
 
+    // Calculo das medias e percentuais pedidos.
     med_alertas = soma_alertas / TOTAL;
     med_prod = soma_prod / qtd_prod;
     med_inj = soma_inj / qtd_inj;
@@ -88,6 +98,7 @@ int main()
     pct_inj_220 = ((float)inj_220 / qtd_inj) * 100.0;
     pct_inj_zero = ((float)inj_zero / qtd_inj) * 100.0;
 
+    // Impressao dos resultados em formato de quadro.
     printf("\n+-----------------------------------------------------------------------+\n");
     printf("|                         CALCULOS E ANALISES                          |\n");
     printf("+----+------------------------------------------------+-----------------+\n");
@@ -101,6 +112,7 @@ int main()
     printf("| %-2s | %-46s | %13.2f %% |\n", "d", "Injecao com zero alertas", pct_inj_zero);
     printf("+----+------------------------------------------------+-----------------+\n");
 
+    // Ordenacao simples em ordem decrescente pelo numero de alertas.
     for (int i = 0; i < TOTAL - 1; i++) {
         for (int j = i + 1; j < TOTAL; j++) {
             if (ord[i].alertas < ord[j].alertas) {
@@ -111,6 +123,7 @@ int main()
         }
     }
 
+    // Impressao do relatorio final ja ordenado.
     printf("\n+---------------------------------------------------------------+\n");
     printf("| RELATORIO ORDENADO POR ALERTAS - DECRESCENTE                  |\n");
     printf("+------------+------+------------+---------------+-------------+\n");

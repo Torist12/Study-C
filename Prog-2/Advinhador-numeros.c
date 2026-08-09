@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-//3 tentativas e 30 numeros, mostra o numero que era e deseja boa sorte
+
 int main (void)
 {
 

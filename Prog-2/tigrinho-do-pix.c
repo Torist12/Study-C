@@ -4,7 +4,8 @@
 
 
 //sistema de caça niquel aonde o usuario insere um valor inicial de creditos e vai apostando o valor necessario e ganha de acordo com a % do valor da combinação
-//e o sistema pode para se o usuario pedir
+//e o sistema pode para se o usuario pedir e verifica ovalor que o usuario quer apostar é valido
+
 int main (void){
 
     int v1, v2, v3, v4, aposta, creditos, continuar;
